@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+
+            width: 100%;
+            font-family: Arial;
+        }
+
+        body {}
+
+        #main {
+            margin: 0 auto;
+            padding: 0 200px;
+            padding-top: 70px;
+            /* in case you want to set a fixed width on this as well */
+        }
+
+        * {
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+        }
+
+        .columnicons {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+        }
+
+        .column5 {
+            float: left;
+            width: 20%;
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .image-with-text {
+            display: flex;
+            align-items: center;
+        }
+
+        .image-with-text img {
+            margin-right: 10px;
+            width: 100px;
+            height: 100px;
+            /* adjust as needed */
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff00;
+            color: rgb(0, 0, 0);
+            z-index: 1000;
+            /* Ensures it stays on top */
+            padding: 0px 0;
+
+        }
+
+        .top-bar .container {
+            width: 100%;
+            max-width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-bar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-bar nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: background 0.3s ease;
+        }
+
+        .top-bar nav ul li a:hover {
+            background-color: #55555500;
+            border-radius: 3px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.218);
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #000000;
+        }
+
+
+        .show {
+            display: block;
+        }
+
+
+        .content {
+            padding-top: 20px;
+            /* Space for the fixed top bar */
+            padding: 0px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .logo-link {
+            position: absolute;
+            /* Position absolutely within the top bar */
+            top: 0;
+            left: 0;
+            margin: 0px;
+            /* Adjust the margin to place the logo as needed */
+        }
+
+        .logo-link {
+            transform: scale(0.5);
+        }
+
+        .nav-container {
+            position: absolute;
+            /* Position absolutely within the top bar */
+            top: 0;
+            right: 0;
+            margin: 10px;
+        }
+
+        .bottom-element {
+    background-color: #ffffff; /* Background color */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0);
+}
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            /* Space between icons */
+            margin-bottom: 10px;
+        }
+
+        .icon-container a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            /* Ensure SVGs inherit color */
+        }
+
+        .bottom-text {
+            font-size: 14px;
+            color: #333;
+            /* Text color */
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://www.tumcso.com/" class="logo-link">
+                <img src="imgs/tumscologo.avif" alt="logo" class="logo-image">
+            </a>
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown()">
+                                <svg class="menubars" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "
+                                    type="Menu">
+                                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                                </svg>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="https://www.tumcso.com/research">
+                                    <font size="-1" color="#000000">Research</font>
+                                </a>
+                                <a href="https://www.tumcso.com/teaching">
+                                    <font size="-1" color="#000000">Teaching</font>
+                                </a>
+                                <a href="https://www.tumcso.com/company-cooperations">
+                                    <font size="-1" color="#000000">Industry Cooperations</font>
+                                </a>
+                                <a href="https://www.tumcso.com/news">
+                                    <font size="-1" color="#000000">News</font>
+                                </a>
+                                <a href="https://www.tumcso.com/team">
+                                    <font size="-1" color="#000000">Team</font>
+                                </a>
+                                <a href="https://www.tumcso.com/offers">
+                                    <font size="-1" color="#000000">Open Positions</font>
+                                </a>
+                                <a href="https://www.tumcso.com/contact">
+                                    <font size="-1" color="#000000">Contact</font>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div class="Intro">
+            <h1>
+                <font size="+10">🚀</font>
+            </h1>
+            <h1>
+                <font size="+4"><b>AI@WORK - How AI is changing leadership, work and collaboration</b></font>
+            </h1>
+            <img src="imgs/logo.avif" height="80%" width="80%">
+
+            <p><b>Anmeldung nutzen Sie folgenden Link</b>(first come, first serve): <a
+                    href="https://www.eventbrite.de/e/aiwork-how-ai-is-changing-leadership-work-and-collaboration-tickets-939311745717">AI@WORK
+                    Anmeldung</a>. </p>
+            <h2>
+                <font>Über die Konferenz</font>
+            </h2>
+            <p>Wir erwarten eine große Anzahl an Gästen aus Wissenschaft, Politik und Industrie sowie Studierende der
+                TUM,
+                was das hohe Interesse am Thema Künstliche Intelligenz (KI) widerspiegelt.</p>
+            <p>📅 <b>Datum</b> 10. Oktober 2024 </p>
+            <p>🕘 <b>Zeit:</b> 9:00 - 18:30 Uhr CEST</p>
+            <p>📍 <b>Ort:</b> TUM School of Management Audimax, Arcisstraße 21, D-80333 München</p>
+            <p><b>Moderation:</b> Anja Zerbin</p>
+            <p><b>Veranstaltungsdesign & Regie:</b> Frank Reichert, 2plus GmbH</p>
+            <p>Wir danken unseren Partnern: Allianz, iwis, Siemens und DLD für die Unterstützung unserer Konferenz. </p>
+        </div>
+        <div class="Speaker">
+            <h1>
+                <font size="+3" color="#0065bd">Unsere Speaker</font>
+            </h1>
+
+            <div class="row">
+                <div class="column">
+                    <h2>Prof. Ethan Mollick</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture1.png">
+                        <p>Prof. an der Wharton School der University of Pennsilvania</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Steffi Czerny</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture2.png">
+                        <p>Geschäftsführerin der DLD Media GmbH</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Prof. Michal Kosinski</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture3.png">
+                        <p>Prof. für Organizational Berhavior bei Stanford University</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Prof. Björn Ommer</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture4.png">
+                        <p>Head of Computer Vision & Learning Group LMU Munich</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Markus Blume, MdL</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture5.png">
+                        <p>Bayerischer Staatsminister für Wissenschaft & Kultur</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Jan Hiesserich</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture6.png">
+                        <p>VP Strategy und Communitcations bei Aleph Alpha</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Peter Norvig</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture7.png">
+                        <p>Computer scientist und Research Director bei Google</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Prof. Martin Obschonka</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture8.png">
+                        <p>Prof. für Entrepreneurship an der University of Amsterdam</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Prof. Katja Hutter</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture9.png">
+                        <p>Prof. für Innovation & Entrepreneurship der Universität Innsbruck</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Felix Reinshagen</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture10.png">
+                        <p>Co-Founder und CEO bei NavVis</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Kathrin Schwan</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture11.png">
+                        <p>Data & AI Network Lead bei Accenture</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Matthias Spielkamp</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture12.png">
+                        <p>Mitgründer und Geschäftsführer von AlgorithmWatch</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Thomas Treml</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture13.png">
+                        <p>Cloud Technology Lead bei Microsoft Deutschland</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Prof. Tessa West</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture14.png">
+                        <p>Prof. für Psychology an der New York University</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Dr. Volker Wissing</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture15.png">
+                        <p>Bundesminister für Digitales & Verkehr (Videobotschaft)</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Prof. Leslie Willcocks</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture16.png">
+                        <p>Prof. für Technology Work und Globalization LSE</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Prof. Gunther Friedl</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture17.png">
+                        <p>Dekan der TUM School of Management</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Prof. Isabell Welpe</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture18.png">
+                        <p>Lehrstuhl für Strategie und Organisation</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Prof. Theresa Treffers</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture19.png">
+                        <p>Prof. an der Universität Schloss Seeburg und TUM</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Mario Pofahl</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture20.png">
+                        <p>Partner bei Linklaters</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h2>Dr. Barbara Karuth-Zelle</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture21.png">
+                        <p>Vorstandsmitglied und COO der Allianz SE</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Corsin Decurtins</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture22.png">
+                        <p>Chief Technology Officer Netcetera AG</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Ayesha Khanna</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture23.png">
+                        <p>CEO von Addo AI in Singapur</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Prof. Katja Nettesheim</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture24.png">
+                        <p>CEO von Culcha</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2>Katja Nikolaus</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture25.png">
+                        <p>Chief Business Development Officer bei JUNE</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2>Eva Gengler</h2>
+                    <div class="image-with-text">
+                        <img src="imgs/Picture26.png">
+                        <p>Co-Founderin enableYou</p>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="Programm">
+            <h1>
+                <font size="+3" color="#0065bd">Unser Programm</font>
+            </h1>
+            <p><b>Zeit: 10.Oktober 2024 | 09:00 - 18:30 CEST</b></p>
+            <table>
+                <tr>
+                    <th>Titel</th>
+                    <th>Speaker</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #66B4C1">
+                        <font color=#ffffff>09:00 - 09:45 | Registrierung & Begrüßung</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #66B4C1">
+                        <font color=#ffffff>09:45 - 12:00 | Session 1: AI@WORK: Wie KI Führung, Arbeit und
+                            Zusammenarbeit verändert</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Grußwort per Videobotschaft</td>
+                    <td><b>Dr. Volker Wissing</b> (Bundesminister für Digitales & Verkehr)</td>
+                </tr>
+                <tr>
+                    <td>Bavaria - European home of AI</td>
+                    <td><b>Markus Blume, MdL</b>(Bayerischer Staatsminister für Wissenschaft & Kultur)</td>
+                </tr>
+                <tr>
+                    <td>Generative AI: Unleashing our new superpower or hitting PeakAI</td>
+                    <td><b>Prof. Björn Ommer</b> (LMU)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>The disruptive role of AI in entrepreneurship</td>
+                    <td><b>Prof. Martin Obschonka</b>(University of Amsterdam)</td>
+                </tr>
+                <tr>
+                    <td>Lightning Talks: Insights into today's AI implementation</td>
+                    <td><b>Kathrin Schwan</b> (Accenture)<br>
+                        <b>Prof. Leslie Willcocks</b> (LSE)<br>
+                        <b>Thomas Treml</b> (Microsoft)<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #BFBFBF">
+                        <font color=#ffffff>12:00 - 13:00 | Lunch & Networking </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #66B4C1">
+                        <font color=#ffffff>13:00 - 14:50 | Session 2: Herausforderungen und Chancen bei der Einführung
+                            von KI</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lightning Talks on revolutionary AI horizons</td>
+                    <td><b>Jan Hiesserich</b> (Aleph Alpha)<br>
+                        <b>Felix Reinshagen</b> (NavVis)<br>
+                        <b>Katja Nikolaus</b> (June Legal AI & Automation)<br>
+                        <b>Corsin Decurtins</b> (Netcetera)<br>
+                        <b>Eva Gengler</b> (Founder enableYou)<br>
+                        <b>Prof. Katja</b> Nettesheim (Culcha)
+                    </td>
+                </tr>
+                <tr>
+                    <td>AI in Innovation Management: Unlocking New Possibilities</td>
+                    <td><b>Katja Hutter</b> (University of Innsbruck)</td>
+                </tr>
+                <tr>
+                    <td>AI will save us all. Unless it won't</td>
+                    <td><b>Matthias Spielkamp</b> (CEO of Algorithmwatch)</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #BFBFBF">
+                        <font color=#ffffff>14:50 - 15:15 | Coffee break</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #66B4C1">
+                        <font color=#ffffff>15:15 - 18:30 | Session 3: Was kommt als Nächstes? Die Zukunft von KI</font>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Using humans vs. machines to understand interpersonal interactions
+                    </td>
+                    <td><b>Tessa West</b> (New York University)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Large Language Models or Large Models of the Human Mind?
+                    </td>
+                    <td><b>Michal Kosinski</b> (Stanford University)
+                    </td>
+                </tr>
+                <tr>
+                    <td>AI for Training and Continuing Education
+                    </td>
+                    <td><b>Norvig</b> (Google)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Und weitere keynotes von top Speakern zur Zukunft von AI
+                    </td>
+                    <td>Unter anderem Keynotes von:<br>
+                        <b>Ethan Mollick</b> (Wharton School)<br>
+                        <b>Ayesha Khanna</b> (Addo)<br>
+                        <b>Steffi Czerny</b> (DLD Media GmbH)<br>
+                        <b>Dr. Barbara Karuth-Zelle</b> (Allianz)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #66B4C1">
+                        <font color=#ffffff>18:30 - End | Networking & Get-together</font>
+                    </td>
+
+                </tr>
+
+            </table>
+        </div>
+        <div class="Team">
+            <h1>
+                <font size="+3" color="#0065bd">Unser Team</font>
+            </h1>
+            <div class="row">
+                <div class="column5">
+                    <img src="imgs/Picture17.png" width="100px" height="100px">
+                    <p>Prof. Dr. Gunther Friedl (Dekan der TUM School of Management</p>
+                </div>
+                <div class="column5">
+                    <img src="imgs/Picture18.png" width="100px" height="100px">
+                    <p>Prof. Dr. Isabell Welpe</p>
+                </div>
+                <div class="column5">
+                    <img src="imgs/Picture19.png" width="100px" height="100px">
+                    <p>Prof. Dr. Theresa Treffers</p>
+                </div>
+                <div class="column5">
+                    <img src="imgs/Picture27.png" width="100px" height="100px">
+                    <p>Patricia Hornstein, MSc</p>
+                </div>
+                <div class="column5">
+                    <img src="imgs/Picture28.png" width="100px" height="100px">
+                    <p>Philipp Lemanczyk, MSc</p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-element">
+            <div class="icon-container">
+                <a href="https://www.facebook.com/TUM.LSO/">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" width="24" height="24">
+                        <title>Facebook</title>
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/StratOrgScience">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 16 16" width="24" height="24">
+                        <title>X</title>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.5 0.5H5.75L9.48421 5.71053L14 0.5H16L10.3895 6.97368L16.5 15.5H11.25L7.51579 10.2895L3 15.5H1L6.61053 9.02632L0.5 0.5ZM12.0204 14L3.42043 2H4.97957L13.5796 14H12.0204Z">
+                        </path>
+                    </svg></a>
+                <a href="https://www.linkedin.com/company/chair-for-strategy-and-organization-tum/">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" width="24" height="24">
+                        <title>LinkedIn</title>
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z">
+                        </path>
+                    </svg> </a>
+            </div>
+            <p class="bottom-text">
+                <font size="-2" color="#808080">© Chair for Strategy and Organization, Technical University of Munich
+                </font>
+            </p>
+        </div>
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.querySelector(".dropdown-content");
+            dropdownContent.classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn') && !event.target.closest('.menubars')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+
+</html>
